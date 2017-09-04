@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        #box {
+            width: 800px;
+            height: 560px;
+            position: relative;
+            margin: 5px auto;
+            background: #000000;
+        }
+        
+        #dialog {
+            width: 300px;
+            height: 200px;
+            padding: 20px 0;
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            margin: auto;
+            background: #0ba7fa;
+            border-radius: 5px;
+        }
+        
+        #dialog li {
+            width: 100%;
+            line-height: 40px;
+            text-align: center;
+            cursor: pointer;
+            color: #ffffff;
+            list-style: none;
+        }
+        
+        #dialog li:hover {
+            background: #f7ad07;
+        }
+        
+        .footer {
+            width: 800px;
+            height: 40px;
+            margin: 10px auto;
+            border: 1px solid #b5b5b5;
+            border-radius: 5px;
+        }
+        
+        .footer input {
+            display: block;
+            border: none;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            font-size: 20px;
+            border-radius: 5px;
+        }
+        
+        #board {
+            position: absolute;
+            left: 20px;
+            top: 20px;
+            color: #fff;
+            font-size: 40px;
+        }
+        .active{
+        	position:absolute;background:#eeeeee;padding:5px;font-size:20px;border-radius:3px;top:0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <div id="board">0</div>
+        <ul id="dialog">
+            <li deg="2500" speed="100" num="20">简单难度</li>
+            <li deg="2000" speed="75" num="15">中等难度</li>
+            <li deg="1500" speed="50" num="10">较高难度</li>
+            <li deg="800" speed="25" num="5">热血难度</li>
+            <li deg="500" speed="10" num="1">疯狂难度</li>
+        </ul>
+    </div>
+
+    <div class="footer">
+        <input type="text" name="content" id="iptBox">
+    </div>
+</body>
+</html>
+<script type="text/javascript">
+	window.onload = function(){
+		new GameEngine().start();
+		new CreateWords().keydown();
+	}
+	function GameEngine(){
+		if( !GameEngine.instance ){
+			GameEngine.instance = {
+				bad : 0,
+				score : 0,
+				start : function(){
+					this.initMenu();
+				},
+				initMenu : function(){
+					this.dialog = document.getElementById("dialog");
+					this.ipt = document.getElementById("iptBox");
+					var that = this;
+					this.dialog.onclick = function(e){
+						that.ipt.focus();
+						var e = e || event;
+						var target = e.target || e.srcElement;
+						if( target.nodeName == "LI" ){
+							that.deg = target.getAttribute("deg");//间隔时间
+							that.speed = target.getAttribute("speed");//移动速度
+							that.num = target.getAttribute("num");//错词数量
+							console.log( that.num );
+							this.remove();
+							setInterval(function(){
+								new CreateWords().init().move();
+							},that.deg)
+						}
+					}
+				}
+			}
+		}
+		return GameEngine.instance;
+	}
+
+	function CreateWords(){
+		this.box = document.getElementById("box");
+		this.board = document.getElementById("board");
+		this.init = function(){
+			this.words = ['function', 'var', 'if', 'else', 'document', 'getElementById', 'return', 'true', 'false', 'getElementsByTagName', 'offsetX', 'offsetY', 'clientX', 'clientY', 'pageX', 'pageY', 'offsetLeft', 'offsetTop', 'clientLeft', 'clientTop', 'offsetWidth', 'offserHeight', 'clientWidth', 'clientHeight', 'scrollLeft', 'scrollTop','children','childNodes','appendChild','removeChild','cloneNode','arguments','getAttribute','setAttribute','setInteval','setTimeout'];
+			this.color = ['#9a00fa', '#f7072c', '#f7ad07', '#ee07f7','#040148', '#0cf727'];
+			this.ball = document.createElement("div");
+			this.ball.innerHTML = this.words[ this.rand( 0 , this.words.length-1 ) ] ;
+			this.ball.style.color = this.color[ this.rand( 0 , this.color.length - 1 ) ] ;
+			this.ball.className = "active";
+			this.box.appendChild(this.ball);
+			this.ball.l = this.rand(0 , this.box.offsetWidth - this.ball.offsetWidth);
+			this.ball.t = 0;
+			
+			this.ball.style.left = this.ball.l + "px";
+			
+			return this;
+		}
+		this.move = function(){
+			this.ball.timer = setInterval(function(){
+				this.ball.t ++;
+				if( this.ball.t > (this.box.offsetHeight - this.ball.offsetHeight) ){ //单词落地条件
+					new GameEngine().bad++;
+					clearInterval(this.ball.timer);
+					this.ball.remove();
+					if(new GameEngine().bad == new GameEngine().num){
+						var flag = confirm("当前得分是200分,是否继续" );
+						if( flag ){
+							location.reload();
+						}else{
+							alert("再见");
+							window.close();
+						}
+					}
+				}
+				this.ball.style.top = this.ball.t + "px";
+			}.bind(this),new GameEngine().speed);
+		}
+		this.rand = function(min,max){
+			return Math.floor(Math.random()*(max-min+1)+min);
+		}
+		this.keydown = function(){
+			var that = this;
+			new GameEngine().ipt.onkeydown = function(e){
+				var e = e || event;
+				var code = e.keyCode ;
+				if( code == 13 ){
+					that.judge(this.value);
+				}
+			}
+		}
+		this.judge = function(val){
+			var child = this.box.children;
+			for(var i = 0 ; i < child.length ; i++){
+				if( child[i].innerHTML == val){
+					clearInterval( child[i].timer );
+					child[i].remove();
+					new GameEngine().score += 100;
+					this.board.innerHTML = new GameEngine().score;
+					new GameEngine().ipt.value = "";
+					break;
+				}
+			}
+		}
+	}
+</script>
