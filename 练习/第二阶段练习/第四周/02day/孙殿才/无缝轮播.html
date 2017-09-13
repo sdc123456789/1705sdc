@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				margin:50px auto;
+				width:300px;
+				height:400px;
+				overflow: hidden;
+				position: relative;
+				top:50px;
+				left:center;
+			}
+			ul li{
+				list-style:none;
+				float:left;
+				height:400px;
+				width:300px;
+				
+			}
+			ul{
+				position: absolute;
+				
+			}
+			ul,li,img{padding: 0;
+			margin:0;
+				
+			}
+			img{
+				height:400px;
+				width:300px;
+				display: block;
+				border: none;
+			}
+			#act{
+				position: absolute;
+				z-index: 0;
+				bottom:20px;
+			}
+			#act span{
+				display:inline-block;
+				text-align: center;
+				width:20px;
+				height:20px;
+				border-radius:100%;
+				background:#99FF99;
+				margin-left:6px;
+			}
+		    #act span:hover,#act span.active{
+		    	background:red;
+				color:#008000;
+				cursor: pointer;
+		    }
+		    .btn{
+		    	position:absolute;
+		    	width:30px;
+		    	height:100px;
+		    	background:rgba(0,0,0,.5);
+		    	text-align: center;
+		    	line-height: 100px;
+		    	cursor: pointer;
+		    }
+		    .R{
+		    	top:180px;
+		    	right:10px;
+		    }
+		    .L{
+		    	top:180px;
+		    	left:10px;
+		    }
+		    
+		    
+			
+			
+		</style>
+	</head>
+	<body>
+		<section id="box">
+			<ul>
+				<li><img src="images/01.jpg" /></li>
+				<li><img src="images/2.jpeg" /></li>
+				<li><img src="images/3.jpg" /></li>
+				<li><img src="images/4.jpg" /></li>
+				<li><img src="images/5.jpg" /></li>
+			</ul>
+			<div id="act">
+				<span class="active">1</span>
+				<span>2</span>
+				<span>3</span>
+				<span>4</span>
+				<span>5</span>
+			</div>
+			<p class="btn L"><</p>
+			<p class="btn R">></p>	
+				
+			
+		</section>
+		<script src="startMove.js" type="text/javascript" charset="utf-8"></script>
+		<script>
+		var	oUl = document.getElementsByTagName("ul")[0];
+		var oLi = document.getElementsByTagName("li");
+		oUl.appendChild(oLi[0].cloneNode(true));
+		var oSpan = document.getElementsByTagName("span");
+		console.log(oUl,oLi.length)
+		var aBtn = document.getElementsByClassName("btn")
+		oUl.style.width=oLi.length*oLi[0].offsetWidth+"px";
+			//console.log(oUl.offsetWidth)
+			var _Wid=oLi[0].offsetWidth;
+			var i=0;
+		var	timer = setInterval(function(){
+			
+			move();
+		  
+		
+		},3000);
+			aBtn[0].onclick=function(){
+				clearInterval(timer);
+				//点击左按钮临界值处理,无论是何种操作，当出现第一张图片时，i对应的值为0
+				if(i == 0) {
+					//此时需要将ul的left值调到最后一张图片显示时的值（oLi.length-1）
+					oUl.style.left = -(oLi.length - 1) * _Wid + "px";
+					//同时改变i值，让下一次变化变成倒数第2张(oLi.length-2)
+					//又因为move里有i++;所以最终确定i为oLi.length -3
+					i = oLi.length - 3;
+				} else {
+					//正常情况下，i的变化要多减2，其中仍然需要抵消i++的加一操作
+					i = i - 2;
+				}
+				move();
+			}
+			aBtn[1].onclick = function(){
+				move()
+			}
+		//-------------------------------------------	
+			for(let b=0;b<oSpan.length;b++){
+				
+				oSpan[b].onmouseover = function() {
+					
+					clearInterval(timer);
+					//由于i++的影响，在赋值时需要-1
+					i = b - 1;
+					move();
+				}
+			}
+			
+		function move(){
+				i++;
+			if(i==oLi.length){
+				i=1;//控制右无缝轮播
+				oUl.style.left=0;
+			}
+			for(a=0;a<oSpan.length;a++){
+				oSpan[a].className=""
+			}
+			if(i==oLi.length-1){
+				oSpan[0].className="active";
+			}else{
+				oSpan[i].className="active";
+			}
+				startMove(oUl,{"left":-i*_Wid},function(){
+					clearInterval(timer);
+					timer=setInterval(function(){
+						move();
+					},3000)
+				});
+			}
+				
+			
+			
+		</script>
+		
+		
+		
+		
+		
+	</body>
+</html>

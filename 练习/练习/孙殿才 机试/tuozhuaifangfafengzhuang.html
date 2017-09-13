@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style>
+		#box1{
+			width:200px;
+			height:200px;
+			background:#f99;
+			position: absolute;
+			top:0;
+			left:0;
+		}
+		#box2{
+			width:150px;
+			height:150px;
+			background:#99f;
+			position: absolute;
+			top:210px;
+			left:0;
+		}
+		
+	</style>
+	<body>
+		<div id="box1"></div>
+		<div id="box2"></div>
+		
+		<script type="text/javascript">
+			"use strict"
+			window.onload=function(){
+				var divs=document.querySelectorAll("div");
+				drag(divs[0]);
+				drag(divs[1]);
+				
+				
+				function drag(elem){
+						elem.onmousedown=function(e){
+							var evt=e || event;
+							var w=evt.offsetX;
+							var h=evt.offsetY;
+							//console.log(w,h)
+						document.onmousemove=function(e){
+							var evt=e || event;
+							var _top=evt.clientY-h;
+							var _left=evt.clientX-w;
+							if(_top<=0){
+								_top=0;
+							};
+							if(_left<=0){
+								_left=0;
+							};
+							if(_left>=document.documentElement.clientWidth-elem.offsetWidth){
+								_left=document.documentElement.clientWidth-elem.offsetWidth
+							}
+							if(_top>=document.documentElement.clientHeight-elem.offsetHeight){
+								_top=document.documentElement.clientHeight-elem.offsetHeight
+							}
+							elem.style.top=_top+"px";
+							elem.style.left=_left+"px";
+							return false;
+						}
+					}
+						document.onmouseup=function(){
+							document.onmousemove=null;
+					}
+				}
+			}
+		</script>
+		
+		
+		
+		
+		
+		
+	</body>
+</html>

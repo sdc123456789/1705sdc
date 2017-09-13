@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body,ul,li,img{
+				margin: 0;
+				padding: 0;
+				display: block;
+			}
+			#box{
+				position: relative;
+				width:400px;
+				height: 600px;
+				overflow: hidden;
+				margin: 10px auto;
+			}
+			ul{
+				position: absolute;
+			}
+			ul li{
+				float: left;
+				width: 400px;
+				height: 600px;
+			}
+			img{
+				
+				width: 400px;
+				height: 600px;
+			}
+			span{/*margin-top:60px*/;
+				/*margin-right: 10px;*/
+				position: relative;
+				z-index: 10;
+				float: left;
+				width: 20px;
+				height: 20px;
+				border-radius: 50%;
+				background: red;
+				text-align: center;
+				color: white;
+				font-size: 15px;
+				line-height: 20px;
+				top:580px;
+			}
+			span:hover,span.active{
+				color: red;
+				background: white;
+			}
+			#box .btn {
+				position: absolute;
+				top: 50%;
+				margin-top: -40px;
+				width: 50px;
+				height: 80px;
+				background: #000000;
+				opacity: .5;
+				color: white;
+				font-size: 40px;
+				text-align: center;
+				line-height: 80px;
+				cursor: pointer;
+			}
+			
+			#box .zuo {
+				left: 10px;
+			}
+			
+			#box .you {
+				right: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<ul>
+				<li><img src="images/01.jpg"/></li>
+				<li><img src="images/2.jpeg"/></li>
+				<li><img src="images/3.jpg"/></li>
+				<li><img src="images/4.jpg"/></li>
+				<li><img src="images/5.jpg"/></li>
+				<li><img src="images/3.jpg"/></li>
+			</ul>
+			<div class="btn zuo">&lt;</div>
+			<div class="btn you">&gt;</div>
+		</div>
+		<script src="startMove.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var	oDiv=document.getElementById("box");
+			var oUl=oDiv.getElementsByTagName("ul")[0];
+			var aLi=oUl.getElementsByTagName("li");
+			oUl.appendChild(aLi[0].cloneNode(true));
+			//利用循环创建对应个数的span标签塞入div中。
+			for(var i=0;i<aLi.length-1;i++){
+				var oTxt=document.createTextNode(i+1);
+				var oSpan=document.createElement("span");
+				oSpan.appendChild(oTxt);
+				oDiv.appendChild(oSpan);
+			};
+			//根据li的个数设置ul的长度
+			var wid=aLi[i].offsetWidth;
+			oUl.style.width = aLi.length*wid+"px";
+			
+			var oSpan=document.getElementsByTagName("span");
+			var zuo=document.getElementsByClassName("btn")[0];
+			var you=document.getElementsByClassName("btn")[1];
+			var i=0;
+			oSpan[i].className="active";//默认的添加点击属性
+			
+			//定时器实现一直轮播效果
+			var timer=setInterval(function(){
+				mover();
+			},2000)
+			
+			
+			//两个按钮点击移动
+			you.onclick=function(){
+				clearInterval(timer)
+				mover();
+				timer=setInterval(function(){
+				mover();
+			},2000)
+			};
+			zuo.onclick=function(){
+				clearInterval(timer);
+				if(i==0){
+					oUl.style.left=-(aLi.length-1)*wid+"px";
+					i=aLi.length-1;
+				}
+				i=i-2;
+				mover();
+				timer=setInterval(function(){
+				mover();
+			},3000)
+			}
+			
+			
+			//鼠标移入事件
+			for(let k=0;k<oSpan.length;k++){
+				oSpan[k].onmouseover=function(){
+					clearInterval(timer);
+					i=k-1;
+					mover();
+					for(var j=0;j<oSpan.length;j++){
+					oSpan[j].className="";
+					};
+					oSpan[k].className="active";
+					timer=setInterval(function(){
+				mover();
+			},1500)
+				}
+			}
+				
+			//角标移动以及调用图片移动函数
+			function mover(){
+				for(var j=0;j<oSpan.length;j++){
+					oSpan[j].className="";
+				}
+				i++;	
+				if(i==aLi.length){
+					i=1;
+					oUl.style.left=0;
+				}
+				if(i==aLi.length-1){
+					oSpan[0].className="active";
+				}else{oSpan[i].className="active";}
+				
+				startMove(oUl,{"left":-wid*i})
+			};
+		</script>
+	</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.box{
+				width:20px;
+				height:20px;
+				border-radius:50%;
+				/*background:red;*/
+				/*opacity: 0.4;*/
+				position: absolute;
+				left:0;
+				top:0;
+			}		
+		</style>
+	</head>
+	<body id="body">
+		<!--<div></div>-->
+		
+		<!--全部copy别人的！！！-->
+		
+		<script type="text/javascript">
+			window.onload = function(){
+				//获取随机颜色
+				function color(min,max){
+					return parseInt(Math.random()*(max-min)+min);
+				}
+				var body = document.getElementById('body');
+				document.onmousemove = function(ev){
+					var oEvent = ev || event;
+							
+					var disX = oEvent.clientX;
+					var disY = oEvent.clientY;
+					var oDiv = document.createElement('div');
+					oDiv.className = 'box';
+					body.appendChild(oDiv);
+					oDiv.style.top = disY+'px';
+					oDiv.style.left = disX+'px';
+					oDiv.style.background = 'rgba('+color(0,255)+','+color(0,255)+','+color(0,255)+','+Math.random()+')';
+					
+					//如果用定时器的话，也可以！！
+					var timer = setInterval(function(){
+						body.removeChild(oDiv);
+//						oDiv.style.display = 'none';
+						clearInterval(timer);
+				
+					},500);
+					/*setTimeout(function(){
+						body.removeChild(oDiv);
+					},500)*/
+				}
+			}
+		</script>
+	</body>
+</html>

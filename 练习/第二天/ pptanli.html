@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--<script>
+			var num=prompt("请输入一个整数")
+			if(num>0){
+				document.write(num+"大于0");
+			}else if(num<0){
+				prompt(num+"小于0");
+			}else{
+				prompt(num+"等于0");
+				}
+			
+		</script>-->
+		<!--<script>
+			var num=prompt("请输入奇偶数")
+		
+			if(num%2==0){prompt(num+"偶数");
+			}else{prompt(num+"奇数")
+			}
+			
+		</script>-->
+		<!--<script>
+			var weight=prompt("请输入您的体重")
+			var height=prompt("请输入您的身高")
+			var	n=(height-108)*2;
+			var m=weight-n;
+			    
+			if(m>-10 && m<10){document.write(weight+"体重合格");
+			}else{
+				document.write(weight+"体重不合格");
+			}
+				
+			
+		</script>-->
+		<!--<script>
+			var year=prompt("请输入年份")
+			if(year%4==0&&year%100!=0||year%400==0){document.write(year+"闰年");
+		}
+			else{
+				document.write(year+"平年")
+			}
+				
+			
+			
+	</script>-->
+	<script>
+		var week=prompt("请输入日期");
+function getMyDay(date){		
+		
+		if(date.getDay()==0) week="周日";
+		if(date.getDay()==1) week="周一";
+		if(date.getDay()==2) week="周二";
+		if(date.getDay()==3) week="周三";
+		if(date.getDay()==4) week="周四";
+		if(date.getDay()==5) week="周五";
+		if(date.getDay()==6) week="周六";
+		
+		return week;
+	}
+		var d = getMyDay(new Date(week)); 
+		document.write(d);
+	</script>
+		
+		
+	</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin:0;
+				padding:0;
+			}
+			section{
+				position:relative;
+				top:20px;
+				left:60px;
+			}
+			#box1{
+				height:300px;
+				width:200px;
+			}
+			#box1 img{
+				
+				height:300px;
+				width:200px;
+			}
+			#zoom{
+				width:60px;
+				height:60px;
+				background:#008000;
+				opacity:.3;
+				position:absolute;
+				top:0;
+				left:0;
+				cursor:move;
+			}
+			#big{
+				width:200px;
+				height:300px;
+				position:absolute;
+				left:210px;
+				top:0;
+				overflow: hidden;
+				border: 1px solid #000;	
+				display: none;
+			}
+			#big img{
+				position:absolute;
+				width:600px;
+				height:800px;
+				display: block;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<section id="box">
+			<div id="box1">
+				<img src="images/3.jpg"/> 
+				<p id="zoom"></p>	
+			</div>
+			<div id="big">
+				<img src="images/3.jpg"/>
+			</div>
+			
+		</section>
+		
+		<script>
+		var oBox =document.getElementById("box");
+		var oP = document.getElementById("zoom");
+		var oAr = document.getElementById("box1");
+		var oBig = document.getElementById("big");
+		var oImg = oBig.getElementsByTagName("img")[0];
+		console.log(oImg);
+			oAr.onmousemove = function(e){
+			var	evt=e||event;
+			
+//				console.log(evt.clientX);
+				var x=evt.pageX-oBox.offsetLeft-oP.offsetWidth/2;
+				var y=evt.pageY-oBox.offsetTop-oP.offsetWidth/2;
+				
+				if(x<=0){
+				x=0;
+			}
+				if(y<=0){
+					y=0;
+				}
+				if(y>=oAr.offsetHeight-oP.offsetHeight){
+					y=oAr.offsetHeight-oP.offsetHeight;
+				}
+				if(x>=oAr.offsetWidth-oP.offsetWidth){
+					x=oAr.offsetWidth-oP.offsetWidth;
+				}
+				oP.style.left=x+"px";
+				oP.style.top=y+"px";
+				
+				//----
+				oBig.style.display="block";
+				oImg.style.left=-oP.offsetLeft/oAr.offsetWidth*oImg.offsetWidth+"px";
+				console.log(-oP.offsetLeft/oAr.offsetWidth)
+				console.log(oImg.style.left)
+				oImg.style.top=-oP.offsetTop/oAr.offsetHeight*oImg.offsetHeight+200+"px";
+			}
+			
+			
+			oAr.onmouseout = function(){
+				
+				oBig.style.display="none";
+				
+				
+			}
+			
+		</script>
+		
+		
+		
+		
+		
+		
+	</body>
+</html>

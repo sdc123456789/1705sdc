@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="text" id="txt"><span id="grade"></span><input type="button" id="btn" value="提交">
+		<script type="text/javascript">
+			btn.onclick = function(){
+				var val = txt.value;
+				//var flag1 = flag2 = flag3 = false;
+				var flag1 = flag2 = flag3 = 0;
+				
+				for(var i in val){// val "abcd" val[i] "a"  "a11111C"
+					var code = val.charCodeAt(i);
+					//var code1 = val[i].charCodeAt(0);
+					//console.log(code,code1);
+					if(code>=97 && code <=122){
+						//flag1 = true;
+						flag1 = 1;
+					}
+					if(code>=48 && code <=57){
+						//flag2 = true;
+						flag2 = 1;
+					}
+					if(code>=65 && code <=90){
+						//flag3 = true;
+						flag3 = 1;
+					}
+					
+					
+				}
+				
+				/*if(flag1&&flag2&&flag3){
+					grade.innerHTML = "强";
+				}else if(flag1&&flag2 || flag1&&flag3 || flag2&&flag3){
+					grade.innerHTML = "中";
+				}else{
+					grade.innerHTML = "弱";
+				}*/
+				
+				var num = flag1 + flag2 + flag3; // 3 2 1
+				
+				
+				
+				
+				
+			}
+		</script>
+	</body>
+</html>

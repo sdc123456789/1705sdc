@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var str = "0123456789ABCD";
+			
+			var code = "";
+			for(var i = 0; i < 4; i++){
+				var randNum = parseInt(Math.random()*str.length);
+				var s = str[randNum];
+				code+=s;
+			}
+			
+			console.log(code);
+			
+			
+		</script>
+	</body>
+</html>

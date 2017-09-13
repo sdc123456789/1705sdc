@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>表格增添删除</title>
+	</head>
+	<body>
+		姓名：<input type="text" /> 学号：<input type="text" /> 分数：<input type="text" />
+		<input type="button" value="添加"/>
+		<div id="data">
+			
+		</div>
+		
+	<script>
+		aInput = document.getElementsByTagname("input");
+		odata = document.getElementById("data");
+		
+		var oTable = document.createElement("table")
+			odata.appendChild(oTable)
+		
+		var str = "<tr><td>姓名</td><td>学号</td><td>分数</td><td>操作</td></tr>";
+		oTable.innerHTML = str;
+		
+		aInput[aInput.length-1].onclick = function(){
+			var	oTr = document.createElement("tr");
+			for(var i=0;i=aInput.length-1;i++;){
+				var oTd = document.createElement("td");
+				var oTxt = document.createTextNode(aInput[i].value);
+					oTd.appendChild(oTxt);
+					oTr.appendChild(oTd);
+			}
+			
+		}
+		
+		
+		
+		
+		
+		
+	</script>	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</body>
+</html>

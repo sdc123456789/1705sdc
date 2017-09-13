@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>05day.pm</title>
+	</head>
+	<body>
+		<script>
+		function genfib(){
+    var point = 0;
+    
+    var getFib = function(num){
+        if(num == 0){
+            return 0;
+        }
+        if(num == 1){
+            return 1;
+        }
+        return getFib(num-1) + getFib(num-2);
+    };
+    
+    return function fib(){
+        return getFib(point++);
+    }
+  }	
+			
+	console.log()		
+			
+			
+			
+		</script>
+	</body>
+</html>

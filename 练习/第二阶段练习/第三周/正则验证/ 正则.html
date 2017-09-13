@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="text" placeholder=""/><br><br>
+		<input type="text" placeholder="请输入数字和字母不超过11位"/><br><br>
+		<input type="text" placeholder="请输入正确格式的电话号码"/><br><br>
+		<div id="box"></div>
+			
+		
+		<script>
+			var oInt=document.getElementsByTagName("input")
+			var oDiv=document.getElementById("box")
+			console.log(oInt[2])
+			oInt[2].onchange = function(){
+				var reg = /^\d{3,4}-\d{7,8}$/
+				if(reg.test(oInt[2].value)){
+				oDiv.innerHTML="格式正确"
+				}else{
+			oInt[2].value="格式错误"
+				}
+			}
+			
+			oInt[1].onchange = function(){
+				var reg= /^\w{11}$/
+				console.log(reg.test(oInt[1].value))
+				if(reg.test(oInt[1].value)){
+					oDiv.innerHTML="格式正确"
+				}else{
+					oInt[1].value="格式有误"
+				}
+				
+			}
+			
+			
+		</script>
+		
+		
+		
+		
+		
+		
+		
+	</body>
+</html>

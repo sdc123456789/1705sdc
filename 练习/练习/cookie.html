@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//添加cookie
+			document.cookie="Id=10001";
+			document.cookie="name=李浩";
+			document.cookie="shuxing=傻逼";
+			//获取cookie
+			document.write(document.cookie)
+			
+			//删除cookie
+			var oDate = new Date();
+			oDate.setDate(oDate.getDate()+31);
+			document.cookie="Id=10001;expires="+oDate;
+			
+			
+			
+		</script>
+	</body>
+</html>

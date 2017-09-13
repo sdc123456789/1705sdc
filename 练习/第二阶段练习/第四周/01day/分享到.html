@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			div{
+				width:100px;
+				height:100px;
+				background:#f99;
+				position:absolute;
+				text-align: center;
+				line-height: 100px;
+				position:absolute;
+				left:-100px;
+				top:50%;
+				/*transition:2s;*/
+			}
+			span{
+				position:absolute;
+				top:25px;
+				left:100px;
+				width:30px;
+				height:60px;
+				background:#f99;
+				text-align: center;
+				line-height: 60px;
+			}
+			a{
+				cursor:pointer;
+			}
+			/*div:hover{
+				left:0px;
+				transition:2s;
+			}*/
+		</style>
+	</head>
+	<body>
+		<div>
+			<a herf="#">分享到</a>
+			<span>>></span>
+		</div>
+		<script>
+		var	oDiv = document.getElementsByTagName("div")[0];
+		var oSpan = document.getElementsByTagName("span")[0];
+		timer=null;
+		oDiv.onmouseover=function(){
+			clearInterval(timer);
+			
+			timer =setInterval(function(){
+				var i=2;
+				if(oDiv.offsetLeft>=0){
+				clearInterval(timer);				
+			}else
+			{
+				oDiv.style.left=oDiv.offsetLeft+i+"px";	
+			}	
+			},30)
+			//--------------
+		
+	
+			
+		}
+			oDiv.onmouseout =function(){
+		clearInterval(timer);
+		timer=setInterval(function(){
+			var i=2;
+			if(oDiv.offsetLeft ==-100){
+				console.log(oDiv.offset)
+				clearInterval(timer);
+				
+			}else{
+				oDiv.style.left=oDiv.offsetLeft-i+"px";
+			}
+			
+			
+		},30)	
+	
+		}	
+			
+			
+			
+		</script>
+		
+		
+		
+		
+		
+		
+		
+	</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			var dateUtil={
+//				判断某个年份是否为闰年,如果是返回true;否则返回false;
+//              接受一个四位数的年份
+				isLeapYear:function(year){
+					if(year%4==0&&year%100!=0||year%400==0){
+						return true;
+					}else{
+						return false;
+					}
+				},
+				//格式化日期，使日期按照我们想要的格式输出
+				format:function(str){
+				var	oDate=new Date();
+				var yy=oDate.getFullYear();
+				var mm=oDate.getMonth()+1;
+				var dd=oDate.getDate();
+				if(mm<10){
+					"0"+mm
+				}
+				if(dd<10){
+					"0"+dd
+				}
+				var fDate=yy+str+mm+str+dd;
+				return fDate;
+					
+				},
+				
+				getDays:function(year,month){
+					switch(month+1){
+					case 2:
+					if(dateUtil.isLeapYear(year)){
+						return 29;
+					}
+						return 28;
+					case 4:
+					case 6:
+					case 9:
+					case 11:
+						return 30;
+					default:
+					  return 31;
+					}
+				},
+				getDiffDays:function(date1,date2){
+					var ss=Math.abs(date2-date1);
+					var difDays=ss/(1000*60*60*24);
+					return difDays;
+				},
+				getNDate:function(date,n){
+					var days=date.getDate()
+					date.setDate(days + n);
+		            var newDate = dateUtil.format(date, str);
+		            return newDate;
+				}
+			}
+			console.log(dateUtil.getDays(2017,6));
+			
+			var date1 = new Date("2017-6-20");
+			var date2 = new Date("2028-5-28");
+			
+			console.log(dateUtil.getDiffDays(date1,date2));
+			console.log(dateUtil.getNDate(date1,1000,"/"));
+		</script>
+	</body>
+</html>

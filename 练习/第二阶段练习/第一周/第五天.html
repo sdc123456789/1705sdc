@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script>
+//			n的阶层
+//			function fact(n){
+//				if(n==1){
+//					return 1;
+//				}
+//				return n*fact(n-1);
+//			}
+//			document.write(fact(4));
+//斐波拉契数列
+		function f(n){
+			if(n==1||n==2){
+				return 1;
+			}else{
+			return f(n-1)+f(n-2);	
+			}
+			
+			
+		}
+		document.write(f(10));
+			
+			
+		</script>
+		
+	</body>
+</html>

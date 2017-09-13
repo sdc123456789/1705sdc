@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body {
+				margin: 0;
+				padding: 0;
+			}
+			
+			div {
+				position: absolute;
+				width: 66px;
+				height: 45px;
+				background: url(img/1.gif) no-repeat;
+				top: 100px;
+				left: 50px;
+			}
+			
+			p,
+			input {
+				margin: 10px;
+			}
+		</style>
+	</head>
+
+	<body>
+		
+		<input type="button" value="根据标鼠标轨迹移动" id="btn"/>
+		<p>请点击按钮激活功能！</p>
+		<div id="yd"></div>
+		<script>
+			
+		oBtn = document.getElementById("btn");
+		oP = document.getElementsByTagName("p");
+		oDiv = document.getElementById("yd");
+		
+		oBtn.onclick = function(e){
+			var posarr=[]
+			var evt = e || event;
+//			oBtn.value+="(已激活）" 或者 
+			this.value+="(已激活)"
+			oP[0].innerHTML= "请按鼠标轨迹移动";
+			oBtn.onclick=null;
+			document.onmousedown = function(e){
+				var	evt = e || event;
+				var posx = evt.clientX;
+				var posy = evt.clientY;
+				 posarr = [{x:posx,y:posy}];//获取鼠标坐标数组  ；
+				
+				document.onmousemove = function(e){
+					var	evt = e || event;
+					var posx = evt.clientX;
+					var posy = evt.clientY;
+
+					posarr.push({x:posx,y:posy});//鼠标每走过一个位置就在数组中增加一个位子
+					//坐标                                                 ；
+					return false;
+				}
+				document.onmouseup = function(){
+					document.onmousemove = null;
+					oDiv.style.backgroundImage="url(img/2.gif)"
+				//更换背景图片； 
+			var timer = setInterval(function(){
+				if(posarr.length==0){
+					oDiv.style.backgroundImage="url(img/1.gif)"
+					clearInterval(timer);
+					return false;
+				}
+				oDiv.style.left=posarr[0].x+"px";
+				oDiv.style.top= posarr[0].y+"px";
+				posarr.shift();
+			},40)
+			}
+			
+			}
+			
+		}
+			
+			
+			
+			
+			
+			
+			
+			
+		</script>
+		
+		
+		
+		
+		
+		
+		
+	</body>
+
+</html>

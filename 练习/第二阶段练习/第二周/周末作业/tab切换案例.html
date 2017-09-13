@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>tab切换案例</title>
+		<style>
+			#tab{width:820px;
+				height:500px;
+				border:1px solid #000000;
+			};
+			ul{  width:800px;
+				overflow:hidden;
+			}
+			li{
+				list-style:none;
+				float:left;
+				width:150px;
+				height:30px;
+				border:2px solid #0066CC; 
+				line-height: 30px;
+				text-align:center;
+			};
+			.active{background:#FF9999;}
+			#txt{width:100%}
+			#txt span{
+				width:200px;
+				height:300px;
+				float:left;
+			}
+			img{
+				width:150px;
+				height:300px;
+			};
+			
+			
+		</style>
+	</head>
+	<body>
+		<div id="tab">
+			<ul id="box">
+				<li class="active">第一</li>
+				<li>第二</li>
+				<li>第三</li>
+				<li>第四</li>
+				<li>第五</li>
+			</ul>
+			<div id="txt">
+				<span><img src="imges/1.jpg"/> </span>
+				<p>ewkjEHFJhfEHF;jkfejKK JJFD;jeij</p>
+			</div>
+		</div>
+		
+		
+		<script>
+			oUl = document.getElementById("box");
+			aLi = document.getElementsByTagName("li");
+			oTxt = document.getElementById("txt");
+			oSpan = oTxt.getElementsByTagName("span")[0];
+			oP = oTxt.getElementsByTagName("p")[0];
+			
+			for(i=0;aLi.length-1;i++){
+				aLi[i].index=i;
+				ali[i].onclick = function(){
+					for(var j = 0; j < aLi.length; j++){
+				aLi[j].className = "";
+			}
+			aLi[this.index].className = "active";
+				}
+				
+				
+				
+			}
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+		</script>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>苹果菜单</title>
+		<style>
+			body{
+				margin:0;
+			     padding:0;
+			     }
+			#menu{
+				position:absolute;
+			bottom:0;
+			text-align:center;
+			width:100%;
+			}   
+			img{
+				width:64px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="menu">
+			<img src="images/1.png" /> 
+			<img src="images/2.png" /> 
+			<img src="images/3.png" /> 
+			<img src="images/4.png" /> 
+			<img src="images/5.png" /> 
+		</div>
+		<script>
+			
+					var	oMenu = document.getElementById("menu");
+		//var aImg = oMenu.getElementsTagName("img");
+		var aImg = oMenu.getElementsByTagName("img");
+		var len = aImg[0].offsetWidth;//获取图片的宽度
+		
+		
+		//确定事件源document
+		document.onmousemove = function(e){
+			//兼容性处理
+		var	evt = e||event;
+		//求鼠标在可视区域的位置；
+		var cx = evt.clientX;
+		var cy = evt.clientY;
+		
+		//遍历图片，求每一个img的中心点距鼠标位置的距离；
+		for(i=0;i<aImg.length;i++){
+			var _left=aImg[i].offsetLeft+len/2-cx;
+			var _top = oMenu.offsetTop+len/2-cy;
+			var distance = Math.sqrt(Math.pow(_left,2)+Math.pow(_top,2));
+			
+			//
+			var ljz = 300;
+			if(distance<ljz){
+				aImg[i].style.width = len+(1-distance/ljz)*len+"px";
+			}
+			
+		}
+			
+		}
+			
+	
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+		</script>
+	</body>
+</html>

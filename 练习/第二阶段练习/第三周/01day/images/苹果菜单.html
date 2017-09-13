@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body{
+				margin: 0;
+				padding: 0;
+			}
+			div{
+				position: absolute;
+				width: 100%;
+				bottom: 0;
+				text-align: center;
+			}
+			img{
+				width: 64px;
+			}
+			/*div{
+				position: absolute;
+				bottom: 0;
+				left: 50%;
+				transform: translateX(-50%);
+			}*/
+		</style>
+	</head>
+	
+	<body>
+		<div id="menu">
+			<img src="images/1.png">
+			<img src="images/2.png">
+			<img src="images/3.png">
+			<img src="images/4.png">
+			<img src="images/5.png">
+		</div>
+		<script type="text/javascript">
+			var oMenu = document.getElementById("menu");
+			var aImg = oMenu.getElementsByTagName("img");
+			
+//			var len = aImg[0].style.width;//不能获取非行内样式
+			var len = aImg[0].offsetWidth;
+			console.log(len);
+			
+			//确定事件源document
+			document.onmousemove = function(e){
+				//兼容性处理
+				var evt = e || event;
+				//求出鼠标坐标位置
+				var cx = evt.clientX;
+				var cy = evt.clientY;
+
+				//console.log(cx,cy);
+				
+				//遍历img，求出每个img中心点距离鼠标坐标的值
+				
+				for(var i = 0; i < aImg.length; i++){
+					
+					var _left = cx - aImg[i].offsetLeft - len/2;
+					var _top = oMenu.offsetTop+len/2 - cy;
+					
+					var distance = Math.sqrt(Math.pow(_left,2)+Math.pow(_top,2));
+					
+					//console.log(distance);
+					
+					
+					//当distance小于某一个值时，对应的img的大小发生变化
+					
+					var inval = 300; //设临界值为300
+					
+					
+					if(distance < inval){
+						
+						aImg[i].style.width = len +(1- distance/inval)*len + "px";
+						
+					}
+					
+					
+					
+				}
+				
+				
+				
+				
+			}
+//			aImg[0].style.transform = "scale(2)";
+		</script>
+	</body>
+
+</html>

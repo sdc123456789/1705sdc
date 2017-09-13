@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>文档碎片创建</title>
+	</head>
+	<body>
+		<script>
+//		var	temp = document.createDocumentFragment();
+//			for(i=0;i<9;i++){
+//				var test = document.createElement("div");
+//				test.innerHTML="aaa"+i
+//				temp.appendChild(test)
+//			}
+		 var temp = document.createDocumentFragment();//文档碎片(当把文档碎片付给某节点时，只是把文档碎片中的子节点付给了某节点，它本身并没有插入到这个节点中)
+		  for (var i=0; i<10; i++) {
+		    var test =document.createElement('div');//创建一个节点
+		    test.innerHTML = 'aaa' +i ;//给节点添加内容
+		    temp.appendChild(test);//把创建的节点插入到temp文档中
+		  }
+			 document.body.appendChild(temp);//把temp文档插入到body末尾
+		</script>
+		
+	</body>
+</html>

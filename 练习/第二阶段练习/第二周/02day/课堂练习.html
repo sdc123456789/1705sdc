@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+//	1.		随机生一个5位以内的数,然后输出该数共有多少位,每位分别是什么
+			var temp = parseInt(Math.random()*100000).toString();
+			console.log("随机数"+ temp.length+"位"+temp+" 分别为:"+temp.split(""));
+			document.write("随机数"+ temp.length+"位"+temp+" 分别为:"+temp.split(""));
+//	2.	敏感词过滤
+		var str="a,b,c,d,d,d,e.DD"
+		var s=str.replace(/d/gi,"*")
+		console.log(s)
+//	3. 密码格式要求
+		
+			
+		</script>
+		
+		
+	</body>
+</html>

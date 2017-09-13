@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+		div{
+				width:500px;
+				height:100px;
+			    color:#000;
+			    text-align:center;
+			    line-height:100px;
+			    font-size:50px;
+			    background:#F2F2F2;
+			    margin:100px auto;
+			}
+		</style>
+	</head>
+	<body>
+		<script>
+//			数码时钟
+		window.onload=function(){
+     var oImg=document.getElementsByTagName('img'); 
+       //document.getElementsByName()
+       //是根据控件名称获取这个控件对象，因为控件名称可以相同，返回的是一个对象数组。（获取HTML元素三种方法之一）
+        var str;
+        
+        function Add(n){  //这个函数的目的，就是为了如果是个位数的话，补充前面一个零
+            if(n<10)
+            return '0'+n;
+            else return ''+n;//如果前面不加上''+的话，会变成数字相加；
+        }
+        
+//		方法1:
+		setInterval(function(){
+			var oData=new Date();
+			//console.log(oData)
+			str=Add(oData.getHours())+Add(oData.getMinutes())+Add(oData.getSeconds());
+			for(var i=0;i<oImg.length;i++){
+				oImg[i].src="img/"+str.charAt(i)+".png";
+			}
+		},1000)
+    
+		}
+        
+//      方法2：（尝试用函数调用的方式也可以）
+//      function trck(){
+//          var oData=new Date()；
+//          str=Add(oData.getHours())+Add(oData.getMinutes())+Add(oData.getSeconds());
+//          
+//          for( var i=0;i<oImg.length;i++){
+//              //alert(str.charAt(i));
+//              oImg[i].src="img/"+str.charAt(i)+'.png';//引号不能少，因为不是特殊关键字，不认识
+//              
+//          }
+//      }
+//       setInterval(trck,1000);//不加分号就会变得不能变化，这句话等于没执行完
+//       trck();
+			
+		</script>
+					
+<div>
+    <img src="img/0.png"/>
+    <img src="img/0.png" />
+    	时
+    <img src="img/0.png" />
+    <img src="img/0.png" />
+ 		分
+    <img src="img/0.png" />
+    <img src="img/0.png" />
+  		秒
+</div>	
+			
+	</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#test {
+				width: 500px;
+				height: 300px;
+				border: 1px solid #CECECE;
+				overflow-y: auto;
+				/*margin: 50px auto;*/
+			}
+			#test p{
+				margin: 0;
+				padding: 10px 0;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="test">
+			<div id="chat">
+				
+			</div>
+			
+		</div>
+		<input type="text" id="txt"><input type="button" id="btn" value="发送">
+		<script type="text/javascript">
+			var oDiv = document.getElementById("test");
+			var oChat = document.getElementById("chat");
+			var oTxt = document.getElementById("txt");
+			var oBtn = document.getElementById("btn");
+			oBtn.onclick  = function(){
+				var val = oTxt.value;
+				oChat.innerHTML += "<p>"+val+"</p>";
+				oDiv.scrollTop = oChat.offsetHeight - oDiv.offsetHeight;
+			}
+			
+		</script>
+	</body>
+
+</html>

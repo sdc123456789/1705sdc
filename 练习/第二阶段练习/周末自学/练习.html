@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+//			摄氏温度转华氏温度
+//			var ss=prompt("请输入摄氏温度")	
+//			var hs=9/5*ss+32
+//			document.write(hs)
+//二、测试数据类型
+//			    n0="1";
+//			var n1=2;
+//			var n3=4;
+//			var n4=5;
+//			alert(typeof(n2))
+//			三、计算
+//	var a=132+45*78;
+//		b=34+543;
+//		n=a/b; 
+//		m=9*(324-34);
+//		clar=n-m;
+//		console.log(clar)
+// 三、写一个程序，要求用户输入鸡蛋数，如果20个鸡蛋放一盒，判断要多少个盒子。
+//在控制台中输出（最后盒子数量自考虑整数个数）
+//	   a=prompt("请输入鸡蛋个数")
+//	   b=a/20
+//	   document.write("需要"+parseInt(b)+"盒子") 
+//四.如果今天是星期六,那么1000天后是星期几?
+//		var d=6
+//		var a=1000%7;
+//		var b=(a+6)%7;
+//		document.write(b)
+//五,用户输如三位数,用程序计算三位数字的和
+// 六.if...else
+//	var a=prompt("请输入您的年龄")
+// 	if(a>=30){
+// 		alert("完蛋")
+// 	}if(a<30){
+// 		alert("年轻有为")
+// 	}
+   	
+		//七、接收用户输入一个数字，判断是否是偶数，如果是偶数那么在控制台中将该数字输出，
+		//如果不是偶数那么在控制台中提示该数字不是偶数
+//		var n=prompt("请输入一个数字")
+//		if(n%2==0){
+//			console.log(n)
+//		}else{
+//			console.log("该数字不是偶数")
+//		}
+//		
+//	八.接收用户输入一个数字，判断当前数字是否在20到70之间，如果在该数字范围内，
+	//请将该数字输出，否则提示不在该范围内。
+	
+//	var n=prompt("请输入一个数字")
+//	if(n>=20&&n<70){
+//		document.write(n)
+//	}else{
+//		document.write("不在该范围")
+//	}
+//	
+	
+
+//	九、写一个程序接收用户输入的值，该值和随机产生的随机数（0-99  包含0 和99）做比较，
+//如果用户输入的值大于随机数输出：您赢了，否则您输了
+//		var n=prompt("请输入值")
+//		if(n>parseInt(Math.random()*100)){
+//			document.write("您赢了");
+//		}else{
+//			document.write("您输了")
+//		}
+//十.接收用户输入年龄。判断当前年龄所属于哪个间断？ 
+//比如：年龄20  所处的阶段为青年
+//注意：以10岁为一个年龄段
+//		var n=prompt("请输入您的年龄");
+//			if(n<10){
+//				document.write("童年");
+//			}else if(n<20){
+//				document.write("少年");
+//			}else if(n<30){
+//				document.write("青少年");
+//			}else if(n<40){
+//				document.write("青壮年");
+//			}else if(n<50){
+//				document.write("壮年");
+//			}else{
+//				document.write("老年");
+//			}
+//  
+
+//?十一.接收用户输入的成绩和姓名，每15分为一个档。
+//以50分为起点， 判断当前学生成绩在哪个范围并只给出提示信息（优，良，差，）同时如果成绩正好为90分，
+//还要在控制台中输出当前学生的姓名及提示信息（优，良，差）。
+//	var	n=prompt("请输入姓名")
+//	var m=prompt("请输入成绩")
+//	if(m<50){
+//		document.write("差");
+//	}else if(m<65){
+//		document.write("良")
+//	}else if(m<80){
+//		document.write("优")
+//	}else if(n==90){
+//		document.write(n+"优")
+//	}
+//	
+//十二.自增自减测试
+//	    var a;
+//		var b=6;
+//		a=b++;
+//		console.log(a,b)
+//十三.
+//			var n=confirm()
+//			n==true?alert("您已退出"):alert("您已取消")
+
+//	十四、	一个加油站为了鼓励车主多加油，所以加的多有优惠。
+//     		92号汽油，每升6元；如果大于等于20升，那么每升5.9；
+//     		97号汽油，每升7元；如果大于等于30升，那么每升6.95
+//    		编写JS程序，用户输入自己的汽油编号，然后输入自己加多少升，弹出价格。
+
+		var n=prompt("请输入汽油编号92或97");
+		var m=prompt("请输入多少升");
+		
+		while(n=92){
+			if(m>0&&m<20){
+				document.write(m*6);
+			}if(m>=20){
+				document.write(m*5.9);
+			}
+		}
+		while(n=97){
+			if(m>0&&m<30){
+				document.write(7*m);
+			}if(m>=30){
+				document.write(m*6.95)
+			}
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		</script>
+		
+	</body>
+</html>

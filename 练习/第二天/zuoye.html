@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>显示当月天数</title>
+	</head>
+	<body>
+		
+<!--输入月份，显示当月的天数
+要求：1) 利用case穿透简化代码-->
+
+	<!--<script>
+		var data=new Date();
+			console.log(data)
+		var day=data.getDay();
+		console.log(day);
+		var month=data.getMonth()+1;
+		console.log(month);
+		var year=data.getFullYear();
+		switch(month){
+		case 1:
+		case 3:
+		case 5:
+		case 7:
+		case 8:
+		case 10:
+		
+		case 12:
+		document.write(" 本月有31天")
+		break;
+		case2:
+		if(year%4==0&&year%100!=0||year%400==0){
+			document.write("闰年本月有29天");
+			}else{
+				document.write("本月有28天")	;
+			}
+		break;
+		case 4:
+		case 6:
+		case 9:
+		case 11:
+		document.write("本月有30天")
+		}
+	</script>-->
+	<!--<script>
+		var year=prompt("请输入查询年份")
+		var month=prompt("请输入查询月份")
+		var day = new Date(year,month,0);//new Date创建一个新的时间;"0"表示一个月的最后一天
+		var daycount = day.getDate();//getDate获取day里的日期；getYear获取年；getmonth获取月；
+		console.log(daycount)
+		document.write(year+"年"+month+"月"+"有"+daycount+"")
+	</script>
+	
+	-->
+	<input type="text"  id="val" value=""/>
+	<button onclick="my">点击</button>
+	<script>
+	
+
+		if(isNaN(val.value)){
+			alert("..");
+		}
+			
+		
+		function my(){
+			var val = document.getElementById("val").value;
+			if(Boolean(Number(val)) == false && Number(val)!=0){
+				alert("...");
+			}
+		}
+		
+		
+		
+	</script>
+	
+
+	</body>
+</html>

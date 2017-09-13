@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body {
+				margin: 0;
+				padding: 0;
+			}
+			
+			div {
+				position: absolute;
+				width: 66px;
+				height: 45px;
+				background: url(img/1.gif) no-repeat;
+				top: 100px;
+				left: 50px;
+			}
+			
+			p,
+			input {
+				margin: 10px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<input type="button" value="根据标鼠标轨迹移动" id="btn">
+		<p>请点击按钮激活功能！</p>
+		<div id="ct"></div>
+		<script type="text/javascript">
+			var oBtn = document.getElementById("btn");
+			var oP = document.getElementsByTagName("p")[0];
+			var oDiv = document.getElementById("ct");
+			oBtn.onclick = function(e){
+				var evt = e || event;
+				//
+				this.value = this.value +"(已激活)";
+				oP.innerHTML = "点击页面，然后在页面中移动";
+				oBtn.onclick=null;
+				var arrPos = [];
+				
+				document.onmousedown = function(e){
+					var evt = e || event;
+					var posX = evt.clientX;
+					var posY = evt.clientY;
+					arrPos = [{x:posX,y:posY}];
+					
+					document.onmousemove = function(e){
+						var evt = e || event;
+						var posX = evt.clientX;
+						var posY = evt.clientY;
+						arrPos.push({x:posX,y:posY});
+					}
+					
+				}
+				document.onmouseup = function(){
+					document.onmousemove = null;
+					document.onmousedown = null;
+					
+					console.log(arrPos);
+					
+					var timer = setInterval(function(){
+						oDiv.style.left = arrPos[0].x+"px";
+						oDiv.style.top = arrPos[0].y+"px";
+						
+						arrPos.shift();
+						
+						if(arrPos.length==0){
+							clearInterval(timer);
+						}
+						
+					},30);
+					
+					
+					
+					
+				}
+				
+				
+				
+				
+				
+			}
+		</script>
+	</body>
+
+</html>

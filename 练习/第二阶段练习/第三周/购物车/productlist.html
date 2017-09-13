@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body,ul,li,p{
+				margin:0;
+				padding:0;
+			}
+			li{
+				list-style:none;
+				border:1px solid #CECECE;
+				width:220px;
+				font-size:14px;
+				float:left;
+				padding:20px;
+				margin:15px;
+			}
+			img{
+				display:block;
+				border:none;
+				width:220px;
+				height:220px;
+				
+				}
+			a{
+				text-decoration: none;
+				color:#999;
+			}
+			a:hover{
+				color:#red;
+			}
+			p{
+				margin:10px;
+			}
+			#cart_count{
+				height:40px;
+				width:80px;
+				border:1px solid #999;
+				position:absolute;
+				right:20px;
+				top:20px;
+				text-align:center;
+				line-height:40px
+			}
+			span{
+				color:#FF0000;
+			}
+			input{
+				background:#FF0000;
+				cursor:pointer;
+			}
+			
+			
+		</style>
+	</head>
+	<body>
+		<div id="count"><a href="cart.html">购物车<span>0</span></a></div>
+		<ul>
+			<!--<li>
+				<a href="productdtail.html?id=1003"><img src="images/苹果.jpg" ></a>
+				<p>￥3999</p>
+				<p><a href="productdtail.html">苹果手机</a></p>
+				
+			</li>
+			<li>
+				<a href="productdtail.html"><img src= "images/华为.jpg"></a>
+				<p>￥3999</p>
+				<p><a href="productdtail.html">华为手机</a></p>
+				
+			</li>
+			<li>
+				<a href="productdtail.html"><img src=" images/小米.jpg"></a>
+				<p>￥3999</p>
+				<p><a href="productdtail.html ">小米手机</a></p>
+				
+			</li>-->
+		</ul>
+		
+		
+		<script>
+		var	arr=[{
+				"productId":1000,
+				"title":"Apple",
+				"price":"￥3999",
+				"imgSrc":"images/苹果.jpg"
+				
+				
+			},
+			{	"productId":1001,
+				"title":"Huawei",
+				"price":"￥3999",
+				"imgSrc":"images/华为.jpg"
+				
+			},
+			{
+				"productId":1002,
+				"title":"小米手机",
+				"price":"￥3999",
+				"imgSrc":"images/小米.jpg"
+			},
+			{	"productId":1003,
+				"title":"Huawei",
+				"price":"￥3999",
+				"imgSrc":"images/华为.jpg"
+				
+			},]
+			oUl = document.getElementsByTagName("ul")[0];
+			html="";
+			for(var i in arr){
+				html += "<li><a href='productdtail.html?id="
+				+arr[i].productId
+				+"'><img src='"
+				+arr[i].imgSrc
+				+"'/></a><p>"
+				+arr[i].title
+				+"</p><p>"
+				+arr[i].price
+				+"</p><input type='button' value='加入购物车' class='btn'data-id="
+				+arr[i].id+"/></li>"
+			}
+			
+			oUl.innerHTML=html
+		//------------------添加购物车-----------------------------------------	
+			aBtn = document.getElementsByClassName("btn");
+			for(i;i<aBtn.length;i++){
+				aBtn[i].onclick=function(){
+					
+				}
+				
+			}
+			
+		</script>
+	</body>
+</html>

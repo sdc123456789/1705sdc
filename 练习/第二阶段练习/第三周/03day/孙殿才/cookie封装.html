@@ -1,0 +1,38 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			function getCookie(name){
+				var str = document.cookie;
+				var arr = str.split(";");
+				for(i=0;i<arr.lenght;i++){
+					arr1=arr[i].split("=");
+					if(arr1[0]==name){
+						return arr[1];
+					}
+					
+				}
+			}
+			
+			
+			function setCookie(name,value,n){
+				var oDate = new Date();
+				    oDate.setDate(oDate.getDate()+n);
+				document.cookie=name+"="+value+";expires"+oDate;
+			}
+			
+			
+			function removeCookie(){
+				setCookie(name,1 -1);
+			}
+			
+			
+			
+		</script>
+	</body>
+</html>

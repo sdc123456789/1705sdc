@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>聊天对话框</title>
+		<style>
+			#box{
+				width:400px;
+				height:600px;
+				background:#999;
+				border:2px solid #0066CC;
+				margin:0 auto;
+				/*text-align:center;*/
+				position:relative;
+			}
+			#box1{
+				width:380px;
+				height:350px;
+				border:1px solid #FF9999;
+				margin:5px auto;
+				background:#eee;
+				overflow-y:scroll;
+				}
+			#txt{width:370px;height:160px;margin-left:15px;}	
+			#btn{
+					position:absolute;
+					bottom:40px;
+					right:20px
+				}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+		<div id="box1">
+			<div id="sro"></div>
+		</div>
+		<textarea cols="40" rows="4" id="txt" placeholder="请按Ctrl+回车键发送"></textarea>
+			
+		<input type="button" value="发送" id="btn"/>
+		</div>
+		
+		<script>
+			oDiv=document.getElementById("box1");
+			oSro=document.getElementById("sro")
+			oTxt=document.getElementById("txt");
+			oBtn=document.getElementById("btn");
+			oBtn.onclick = function(){
+			var val=oTxt.value;
+			oSro.innerHTML+=val+"<br>";
+			oDiv.scrollTop=oSro.offsetHeight - oDiv.offsetHeight;
+			};
+			document.onkeydown = function(e){
+			var	evt = e || event;
+				oKey = evt.keyCode;
+				console.log(evt.keyCode)
+			if(evt.ctrlKey&&oKey==13){
+				var val=oTxt.value;
+				oSro.innerHTML+=val+"<br>";
+			oDiv.scrollTop=oSro.offsetHeight-oDiv.offsetHeight;	
+			}
+				
+			
+			}
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+		</script>
+		
+		
+	</body>
+</html>

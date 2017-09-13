@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			div{
+				height:40px;
+				width:40px;
+				border-radius: 100%;
+				background:#0066CC;
+				position:absolute;
+				top:100px;
+			}
+		</style>
+	</head>
+	<body>
+		<div>	
+		</div>
+		<input type="button" value="下落" id="btn" />
+		<script>
+			var oDiv = document.getElementsByTagName("div")[0];
+			var oBtn = document.getElementById("btn");
+			var cha = document.documentElement.clientHeight;
+			oBtn.onclick=function(){
+					var vy=-20;
+					var vx=5;
+				timer = setInterval(function(){
+				    vy+=1;
+					vx-=0.02;
+					oDiv.style.top = oDiv.offsetTop+vy+"px";
+					oDiv.style.left = oDiv.offsetLeft+vx+"px";
+					//i=i+2;
+					 
+					if(cha-oDiv.offsetHeight<=oDiv.offsetTop){
+						oDiv.style.top=cha-oDiv.offsetHeight+"px";
+						vy=vy*(-0.5);
+						
+					}
+					
+					if(vx<=0){clearInterval(timer);}
+				},100)
+				
+		
+			}
+			
+			
+			
+			
+			
+			
+			
+		</script>
+		
+	</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin:0;
+				padding:0;
+			}
+			li{
+				
+				list-style: none;
+				float: left;
+			    margin:30px
+				
+			}
+			img{
+				display: block;
+				height:300px;
+				width:200px;
+			}
+			div{
+				position: absolute;
+				display: none;
+			}
+			div img{
+				width:400px;
+				height: 600px;
+			}
+			
+		</style>
+	</head>
+	
+	<body>
+	<ul>
+		<li><img src="images/1.jpg" /></li>
+		<li><img src="images/2.jpg" /></li>
+		<li><img src="images/3.jpg" /></li>
+		<li><img src="images/4.jpg" /></li>
+		
+	</ul>
+	<div id="box"></div>
+		
+	<script>
+		var oLi = document.getElementsByTagName("li");
+		var oDiv = document.getElementById("box");
+		console.log(oDiv)
+	for(var i=0;i<oLi.length;i++){
+		oLi[i].index = i;
+//		oLi[i].cloneNode(true);
+//		oDiv.appendChild(oLi[i].cloneNode(true))
+		oLi[i].onmousemove = function(e){
+			var evt=e||event;
+			console.log(evt.clientX);
+			oDiv.style.left=evt.clientX+10+"px";
+			oDiv.style.top=evt.clientY+10+"px";
+			oDiv.style.display="block";
+			oDiv.innerHTML="<img src='images/"+(this.index+1)+".jpg'>"
+			
+		}
+		oLi[i].onmouseout = function(){
+			oDiv.style.display="none";
+		}
+	}
+			
+		
+			
+			
+	
+		
+		
+		
+		
+		
+		
+	</script>	
+		
+		
+		
+		
+		
+		
+		
+	</body>
+</html>

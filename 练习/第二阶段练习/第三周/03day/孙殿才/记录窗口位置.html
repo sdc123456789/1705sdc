@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			div{
+				height:500px;
+				width:200px;
+				background:#f99;
+				position:absolute;
+			}
+		</style>
+	</head>
+	<body>
+		<div></div>
+		
+		<script src="cookie.js" charset="UTF-8"></script>
+		<script>
+		var	oDiv = document.getElementsByTagName("div")[0];
+		oDiv.onmousedown = function(e){
+		var	evt = e || event;
+		var hei = evt.offsetY;
+		var wid = evt.offsetX;
+		document.onmousemove = function(e){
+			var evt= e || evt;
+			_top=evt.clientY-hei;
+			_left=evt.clientX-wid;
+			if(_left<=0){
+				_left=0
+			};
+			if(_top<=0){
+				_top=0
+			};
+			if(_left>=document.documentElement.clientWidth-oDiv.offsetWidth){
+				_left=document.documentElement.clientWidth-oDiv.offsetWidth
+			};
+			if(_top>=document.documentElement.clientHeight-oDiv.offsetHeight){
+				_top=document.documentElement.clientHeight-oDiv.offsetHeight
+			}
+			
+			oDiv.style.left=_left+'px';
+			oDiv.style.top=_top+'px';
+		}	
+			
+		}
+			
+		document.onmouseup = function(){
+			document.onmousemove=null;
+			//document.onmouseup=null;
+			var a=oDiv.style.left;
+			var b=oDiv.style.top;
+			setCookie("left",a,7)
+			setCookie("top",b,7)
+		}
+		oDiv.style.left=getCookie("left")
+		oDiv.style.topgetCookie("top")
+			
+			
+			
+		</script>
+		
+		
+	</body>
+</html>

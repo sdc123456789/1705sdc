@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			li{
+				list-style: none;
+				float: left;
+				height:40px;
+				width:40px;
+				background:#ececec;
+				margin-left: 20px;
+				text-align: center;
+				line-height: 40px;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<ul>
+			<li>0</li>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+			<li>6</li>
+			<li>7</li>
+			<li>8</li>
+			<li>9</li>
+			<li>其他</li>
+			
+		</ul>
+		<script>
+			var aLi = document.getElementsByTagName("li");
+			window.onkeydown=function(e){
+			var	evt= e || event;
+			oKey = evt.keyCode;
+			if(oKey>=48&&oKey<=57){
+				if(48<=oKey&&oKey<=57){
+					aLi[oKey-48].style.backgroundColor="red";
+				}else{
+					aLi[aLi.length-1].style.backgroundColor="red";
+				}
+			}
+			}
+		
+			window.onkeyup=function(){
+				for(i=0;i<aLi.length;i++){
+					aLi[i].style.backgroundColor="#CECECE";
+				}
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#ys{margin:100px;width:200px;height:100px;background:#f99;display:none;}
+			#qx{width:20px;height:20px;background:#99f;}
+		</style>
+	</head>
+	
+	<body>
+		<div id="ys">
+			<p id=qx>X</p>
+	    </div> 
+		<script>
+		       setTimeout(
+				function(){ys.style.display="block";
+				qx.onclick=function(){
+					ys.style.display="none";
+				setTimeout(function(){
+					ys.style.display="block"
+				},1000);
+			}
+				},1000
+			);
+			
+			
+			
+			
+		</script>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</body>
+</html>

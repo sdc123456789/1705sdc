@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="cookie.js" charset="UTF-8"></script>
+	</head>
+	<body>
+		<div id="detail">
+			
+		</div>
+		
+		<script>
+			var	arr=[{
+				"productId":1000,
+				"title":"Apple",
+				"price":"￥3999",
+				"imgSrc":"images/苹果.jpg"
+				
+				
+			},
+			{	"productId":1001,
+				"title":"Huawei",
+				"price":"￥3999",
+				"imgSrc":"images/华为.jpg"
+				
+			},
+			{
+				"productId":1002,
+				"title":"小米手机",
+				"price":"￥3999",
+				"imgSrc":"images/小米.jpg"
+			},
+			{	"productId":1003,
+				"title":"Huawei",
+				"price":"￥3999",
+				"imgSrc":"images/华为.jpg"
+				
+			},]
+			
+			var str = location.search;//?之后的Id
+			console.log(str);//要点击productlist页面的商品才能检测到id
+			var proId = str. split("=")[1];//把字符串转化为数组（把id=“0000”转换为数组吧[id,0000]
+			console.log(proId);
+			var oDetail = document.getElementById("detail")
+			console.log(detail);
+			var html=""
+			for(i in arr){
+				if(arr[i].productId==proId){
+					html+="<img src='"+arr[i].imgSrc+"'><p>"+arr[i].title+"</p><p>"+arr[i].price+"</p>"
+				}
+			}
+			oDetail.innerHTML=html;
+
+			
+	//--------------------------------------------------------------------		
+			//建立cookie,记录商品浏览记录
+			var recordlist=[];
+			var str = getCookie("recordlist");
+			console.log(str);
+			if(str==undefined){
+				recordlist.push(proId)
+			}else{
+				recordlist=str.split(";")
+				recordlist.push(proId)
+			}
+			
+			
+			setCookie("recordlist",recordlist,7)
+		</script>
+		
+		
+		
+		
+		
+		
+		
+		
+	</body>
+</html>

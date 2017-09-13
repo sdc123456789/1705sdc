@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+////编写一个函数，输入n为偶数时，调用函数求1/2+1/4+...+1/n,
+////当输入n为奇数时，调用函数求1+1/3+...+1/n 
+//
+//			function Add(n){
+////				方法1：
+//				if(n<=0){
+//					return;
+//				}
+//				if(n==2){
+//					return 1/2;
+//				}
+//				if(n%2==0){
+//					return Add(n-2)+1/n;
+//				}
+//				if(n==1){
+//					return 1;
+//				}
+//				if(n%2!=0){
+//					return Add(n-2)+1/n
+//				}
+//				/*console.log(Add(2))
+//				 方法2
+				/*if(n%2!=0){
+					var n=1;
+					return 1;
+				}else{
+					return Add(n)+1/(n+2);
+				}*/
+//				var sum = 0;
+//				if(n%2==0){
+//					for(var i = 2; i <= n; i+=2){
+//						sum += 1/i;
+//					}
+//				}else{
+//					for(var i = 1; i <= n; i+=2){
+//						sum += 1/i;
+//					}
+//					}
+//				return sum;
+//			}
+//			console.log(Add(50))
+//使用函数完成任意数字阶乘的计算
+//要求：页面输入任意数字，点击按钮后计算阶乘
+			//方法一:
+//			function fact(n){
+//
+//				if(n==1){
+//				return 1;
+//				}
+//				return fact(n-1)*n
+//			}
+//			var x=prompt("请输入数字");
+//			document.write(fact(x))；
+		</script>
+		<!--方法二：-->
+		<input type="text" id="txt"/>
+		<input type="button" value="弹出一个数的阶层" id="btn" />
+		<script>
+			function jc(n){
+				if(n<=0){
+					alert("请输入一个大于0的数");
+					return;
+				}
+				 var sum=1;
+				for(i=1;i<=n;i++){
+					
+					 sum=sum*i;
+				}
+				return sum;
+			}
+			btn.onclick=function(){
+				var val=parseInt(txt.value)
+				document.write(jc(val))
+			}
+			
+			
+		</script>
+	</body>
+</html>

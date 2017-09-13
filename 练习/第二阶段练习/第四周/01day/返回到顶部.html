@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			div{
+				width:100px;
+				height:100px;
+				background:#0066CC;
+				position:absolute;
+				right:0;
+				top:50%;
+			}
+			body{
+				height:2000px;
+			}
+			#btn{
+				position:fixed;
+				right:0;
+				bottom:20px;
+			}
+		</style>
+	</head>
+	<body id="box">
+		<div></div>
+		<input type="button" value="返回到顶部" id="btn" />
+		<script>
+	var oBody = document.getElementById("box");
+	var	oDiv =	document.getElementsByTagName("div")[0];
+	var oBtn = document.getElementById("btn")
+//		console.log(oBody);
+		oBtn.onclick =function(){
+//			clearInterval(timer);
+	       console.log(document.documentElement.scrollTop,document.body.scrollTop)
+			  var timer = setInterval(function(){
+				var i=10;
+				document.body.scrollTop=document.body.scrollTop-i;
+				if(document.body.scrollTop==0){
+				clearInterval(timer);
+				}
+			},20)
+			
+			}
+			
+			
+			
+			
+		</script>
+		
+		<!--=document.body.scrollTop-i-->
+		
+	</body>
+</html>

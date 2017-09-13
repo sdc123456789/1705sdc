@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+
+var arr = [2,3,4,4,5,6,7];
+
+			function norepeat(arr) {
+				for(var q in arr) {
+					for(var k in arr) {
+						if(arr[q] == arr[k]) {
+							arr.splice(k, 1);
+							k--;
+						}
+			
+					}
+				}
+				return arr;
+			}
+			
+			console.log(norepeat(arr));
+		</script>
+	</body>
+</html>

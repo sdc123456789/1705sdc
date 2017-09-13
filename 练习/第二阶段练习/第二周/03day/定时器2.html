@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			div{position:relative;}
+			#sz{width:300px;height:100px;background:#99f;margin:50px auto;
+			    transform-origin: center; transform:skewX(-35deg);}
+			#js{position:absolute;top:50px;left:440px;}
+		</style>
+	</head>
+	<body>
+		<div>
+			<div id="sz"></div>
+			<span id="js"></span>
+		</div>
+		<script>
+//			js.innerHTML="距离结束:4s"
+			var i=10; 
+			timer=setInterval(function(){
+				i--;
+				if(i==0){
+					clearInterval(timer);
+					sz.style.display="none"
+				}
+				js.innerHTML='距离结束:'+i+"S"
+				
+			},1000);
+			</script>
+	</body>
+</html>

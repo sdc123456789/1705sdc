@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			div{
+				height:100px;
+				width:100px;
+				background:#f99;
+				position:absolute;
+				top:50px;
+				display:none;
+				}
+		</style>
+	</head>
+	<body>
+		<div id="box"></div>
+		<input type="button" value="点击" id="dj"/> 
+		<script>
+			oBox = document.getElementById("box");
+			oDj = document.getElementById("dj")
+			oDj.onclick = function(){
+				if(oBox.style.display=="block"){
+					oBox.style.display="none";
+				}
+				else{
+					oBox.style.display="block";
+				}
+				
+			};
+			
+			
+			oBox.onmousedown = function(e){
+				var evt = e || event;
+				Hei = evt.offsetY;
+				Wid = evt.offsetX;
+				document.onmousemove = function(e){
+					var evt = e || event;
+					var _top = evt.clientY-Hei;
+					var _left = evt.clientX-Wid;
+					if(_left<0){
+						_left=0;
+					}
+					if(_top<0){
+						_top=0;
+					}
+					if(_left>=document.documentElement.clientWidth-oBox.offsetWidth){
+						_left=document.documentElement.clientWidth-oBox.offsetWidth;
+					}
+					if(_top>=document.documentElement.clientHeight-oBox.offsetHeight){
+						_top=document.documentElement.clientHeight-oBox.offsetHeight;
+					}
+				oBox.style.left=_left+"px";
+				oBox.style.top=_top+"px";
+				}
+			}
+			document.onmouseup = function(){
+				document.onmousemove = null;
+			}
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+		</script>
+	</body>
+</html>

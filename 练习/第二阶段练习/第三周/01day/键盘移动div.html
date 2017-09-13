@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			div{background:#FF9999;width:50px;height:50px;position:absolute;}
+		</style>
+		
+	</head>
+	<body>
+		<div id="box">
+		ss
+		</div>
+		<script>
+			oDiv=document.getElementById("box")
+			document.onkeydown=function(e){
+				var evt=e || event;
+				console.log(e);
+				switch(evt.keyCode){
+					case 37:
+					oDiv.style.left=oDiv.offsetLeft-10+"px";
+					break;
+					case 38:
+					oDiv.style.top=oDiv.offsetTop-10+"px";
+					break;
+					case 39:
+					oDiv.style.left=oDiv.offsetLeft+10+"px";
+					break;
+					case 40:
+					oDiv.style.top=oDiv.offsetTop+10+"px";
+					break;
+				}
+			}
+		</script>
+	</body>
+</html>

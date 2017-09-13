@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#outer{
+				width: 200px;
+				height: 200px;
+				background: red;
+			}
+		</style>
+		
+	</head>
+	<body>
+		<div id="outer"></div>
+		<script type="text/javascript">
+			/*function addEvent(){
+				
+			}
+			function removeEvent(){
+				
+			}*/
+			
+			var evt = {
+				addEvent:function(obj,type,fn){
+					if(obj.addEventListener){
+						obj.addEventListener(type,fn);
+					}else{
+						obj.attachEvent("on"+type,fn);
+					}
+					
+				},
+				removeEvent:function(obj,type,fn){
+					if(obj.removeEventListener){
+						obj.removeEventListener(type,fn);
+					}else{
+						obj.detachEvent("on"+type,fn);
+					}
+				}
+			}
+			//obj.addEventListener
+			//obj.addEventListener(eventType,fun);
+			//obj.attachEvent("on"+eventType,fun);
+			
+			var  oDiv = document.getElementById("outer");
+			
+			evt.addEvent(oDiv,"click",foo);
+			evt.removeEvent(oDiv,"click",foo);
+			
+			function foo(){
+				console.log("outer");
+			}
+			
+		</script>
+	</body>
+</html>

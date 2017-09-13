@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#div{height:5000px;position:relative;}
+			#t{height:50px;width:50px;background:#f99;display:block;position:fixed;
+			bottom:0;right:0}
+			p{background:#f9f;}
+		</style>
+		
+	</head>
+	<body>
+		<div id="div">
+			<span id="t">返回顶部</span>
+			<p>sssssssssssssssssssssssssssssssssssssssssssssssssssssssss</p>
+		</div>
+		<script>
+			var scrollTop=document.documentElement.scrollTop||document.body.scrollTop;
+			    
+			console.log(scrollTop);
+			t.onclick=function(){
+				document.documentElement.scrollTop=document.body.scrollTop=0;
+				
+			}
+	
+		</script>
+
+	</body>
+</html>

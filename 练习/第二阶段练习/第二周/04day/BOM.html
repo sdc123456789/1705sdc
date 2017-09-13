@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+//		document.write(navigator.userAgent);//判断浏览器类型 
+		
+////		1.判断浏览器属于那个类型(Trident/Gecko/Chrome/Webkit)
+//	var str= navigator.userAgent;
+//		if(str.indexOf('Gecko')!=-1){
+//			document.write("该浏览器是火狐浏览器");
+//		}
+//		else if(str.indexOf("Trident")!=-1){
+//			document.write("该浏览器是IE浏览器");
+//		}
+//		else if(str.indexOf("Chorme")!=-1){
+//			document.write("该浏览器是谷歌浏览器");
+//		}
+//		else if(str.index.Of("Webkit")!=-1){
+//			document.write("该浏览器是Safari浏览器（苹果浏览器）");
+//		}
+//		else{
+//			document.write("其他浏览器");
+//		}
+		
+//		2.判断是移动端还是pc端（ "Android", "iPhone", "SymbianOS", "Windows Phone", "iPad", "iPod" ）
+		
+			var arr =["Android", "iPhone", "SymbianOS", "Windows Phone", "iPad", "iPod"];
+			var str = navigator.userAgent;
+			for (i=1;i<arr.length;i++){
+			if(str.indexOf(arr[i])!=-1){
+//				document.write("该系统是移动端");
+				location.href="http://m.baidu.com";
+			}
+		}
+		
+		</script>
+	</body>
+</html>

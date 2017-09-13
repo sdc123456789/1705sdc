@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body{
+				margin:0;
+				padding:0;
+			}
+			div{
+				width:65px;
+				height:70px;
+				background:url(imgs/peas.gif);
+				position:absolute;
+				top:0;
+				left:0;
+			}
+			p{
+				height:20px;
+				width:20px;
+				border-radius: 100%;
+				background:green;
+				position:absolute;
+				top:-3;
+				left:25px;
+				z-index:-1;
+				
+			}
+		</style>
+	</head>
+	<body>
+		<div id="act"><p></p></div>
+		<script src="startMove.js" type="text/javascript" charset="utf-8"></script>
+		<script>
+			var oDiv = document.getElementById("act");
+			var oP = document.getElementsByTagName("p")[0];
+			
+			
+				
+			  oDiv.onmousedown = function(e){
+
+			  	
+				var evt = e || event ;
+				Hei = evt.offsetY;
+				Wid = evt.offsetX;
+
+				document.onmousemove = function(e){
+						var evt = e || event;
+					var _top = evt.clientY-Hei;
+					var _left = evt.clientX-Wid;
+					if(_left<0){
+						_left=0;
+					}
+					if(_top<0){
+						_top=0;
+					}
+					if(_left>=document.documentElement.clientWidth-oDiv.offsetWidth){
+						_left=document.documentElement.clientWidth-oDiv.offsetWidth;
+					}
+					if(_top>=document.documentElement.clientHeight-oDiv.offsetHeight){
+						_top=document.documentElement.clientHeight-oDiv.offsetHeight;
+					}
+				oDiv.style.left=_left+"px";
+				oDiv.style.top=_top+"px";
+				
+				}
+				document.onmouseup = function(e){
+				document.onmousemove = null;
+				
+			}
+				
+			startMove(oP,{"left":1000})
+			}	
+			
+				
+				
+			
+			
+			
+			
+			
+			
+		</script>
+		
+		
+		
+	</body>
+</html>

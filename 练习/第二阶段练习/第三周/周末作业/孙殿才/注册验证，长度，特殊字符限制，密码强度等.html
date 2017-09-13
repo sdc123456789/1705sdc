@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>注册验证，长度，特殊字符限制，密码强度等</title>
+		<style>
+			section{
+				height:700px;
+				width:500px;
+				background:#CECECE;
+				margin:50px auto;
+			}
+			ul{
+				overflow: hidden;
+				
+			}
+			li{
+				line-height: 40px;
+				list-style: none;
+				margin:25px 10px;
+				height:80px;
+				width:400px;
+				background:#fff;
+			}
+			li input{
+				border:none;
+				height:35px;
+				/*position:relative;*/
+			}
+			p{
+				color:red;
+				height:40px;
+				width:300px;
+				/*position:absolute;
+				top:100px;
+				left:350px;*/
+				/*background:red;*/
+			}
+			#btn{
+				width:400px;
+				background:red;
+				margin:50px 30px;
+			}
+		</style>
+		
+	</head>
+	<body>
+		<section>
+			<ul>
+				<li>用户名<input type ="text"/><p></p></li>
+				<li>设置密码<input type="password"/><p></p></li>
+				<li>确认密码<input type="password" placeholder="请再次输入密码 "/><p></p></li>
+				<li>邮箱验证<input type="text" placeholder="请输入邮箱"/><p></p></li>
+				<li>手机验证<input type="text" placeholder="请输入手机号码"/><p></p></li>
+			</ul>
+			<div><input type="checkbox" id="cke"/>我已阅并同意</div>
+			
+			<input type="button" value="同意" id="btn"/> 
+			
+			
+		</section>
+		
+		<script>
+			var oInt = document.getElementsByTagName("input");
+			var oBtn = document.getElementById("btn")
+			var oP = document.getElementsByTagName("p")
+			console.log(oInt[0])
+			oBtn.onclick = function(){
+				var reg=/^(?=.*?[a-zA-Z])(?=.*?[0-9])[a-zA-Z0-9]{6,}$/
+				if(reg.test(oInt[0].value)){
+					oP[0].innerHTML=""
+				}else{
+					oP[0].innerHTML="请输入正确格式"
+				}
+				var reg =/^\w{5,15}$/
+				if(reg.test(oInt[1].value)){
+					oP[1].innerHTML=""
+				}else{
+					oP[1].innerHTML="格式不正确"
+				}
+				if(oInt[1].value==oInt[2].value){
+					oP[2].innerHTML=""
+				}else{
+					oP[2].innerHTML="两次输入不一致"
+				}
+				var reg = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/
+				if(reg.test(oInt[3].value)){
+					oP[3].innerHTML=""
+				}else{
+					oP[3].innerHTML="格式不正确"
+				}
+				
+				var reg=/^1\d{10}$/
+				if(reg.test(oInt[4].value)){
+					oP[4].innerHTML=""
+				}else{
+					oP[4].innerHTML="格式 不正确"
+				}
+		}
+
+
+
+
+
+
+
+
+
+
+
+			
+		</script>
+		
+		
+		
+		
+		
+	</body>
+</html>

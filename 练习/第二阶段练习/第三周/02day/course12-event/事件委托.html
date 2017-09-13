@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			li{
+				margin: 10px 0;
+				background: red;
+			}
+		</style>
+	</head>
+	<body>
+		<ul>
+			<li>11111</li>
+			<li>2222</li>
+			<li>3333</li>
+			<li>44444</li>
+			<li>5555</li>
+			<li>6666</li>
+		</ul>
+		<script type="text/javascript">
+			/*var aLi = document.getElementsByTagName("li");
+			for(var i = 0; i < aLi.length; i++){
+				aLi[i].onclick = function(){
+					console.log(this.innerHTML);
+				}
+			}
+			
+			
+			//增加li
+			var oUl = document.getElementsByTagName("ul")[0];
+			var oLi = document.createElement("li");
+			var oTxt = document.createTextNode("7777");
+			oLi.appendChild(oTxt);
+			oUl.appendChild(oLi);*/
+			
+			//事件委托
+			var oUl = document.getElementsByTagName("ul")[0];
+			oUl.onclick = function(e){
+				var evt = e || event;
+				//evt.srcElement 兼容IE和chrome
+				//evt.target IE不支持
+				//console.log("aaaaa");
+				var target = evt.target || evt.srcElement;
+				
+				//console.log(target.nodeName);
+				
+				if(target.nodeName.toUpperCase() == "LI"){
+					console.log(target.innerHTML);
+				}
+				
+			}
+			
+			var oLi = document.createElement("li");
+			var oTxt = document.createTextNode("7777");
+			oLi.appendChild(oTxt);
+			oUl.appendChild(oLi);
+			
+			//console.log("li"=="LI")
+
+			//console.log("li".toUpperCase(),"LI".toLowerCase())
+		</script>
+	</body>
+</html>

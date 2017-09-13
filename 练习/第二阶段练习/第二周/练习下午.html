@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>数列排序法</title>
+	</head>
+	<body>
+		<script>
+//			编写函数map(arr) 把数组中的每一位数字都增加30%
+//				var arr=[]
+//				function map(arr){
+//					document.write(arr*(1+0.3))
+//				}
+//				map(5)
+//				document.write()
+//				
+//				
+//				编写函数has(arr , 60) 判断数组中是否存在60这个元素，返回布尔类型
+//				function has(arr,num){
+//					for(i in arr){
+//						if(arr[i]==num){
+//							return true;
+//						}
+//					}
+//					return false;
+//				}
+//				var arr=[12,45,60,3,4,55,2]
+//				console.log(has(arr,60))
+//		
+//				  选择排序
+//			var arr=[1,3,8,12,34,18,16]
+//			 for(i=0;i<arr.length;i++){
+//			 	var minIndex=i;
+//			 	for(j=i+1;j<arr.length;j++){
+//			 		if(arr[minIndex]>arr[j]){
+//			 			minIndex=j;
+//			 		}
+//			 	}
+//			 	var temp=arr[i];
+//			 	arr[i]=arr[minIndex]
+//			 	arr[minIndex]=temp
+//			 }
+//			 document.write(arr)
+//冒泡排序
+//		for(var i=0;i<arr.length-1;i++){		//比较几轮
+//			for(var j=0;j<arr.length-1-i;j++){		//每一轮比较几次
+//				if(arr[j]>arr[j+1]){
+//				var	temp=arr[j];
+//					arr[j]=arr[j+1];
+//					arr[j+1]=temp;
+//				}
+//			}
+//		}
+//		document.write(arr)
+//编写函数norepeat(arr) 将数组的重复元素去掉，并返回新的数组
+//		var arr=[2,11,1,2,2,4,5,4,7,5,7,8,4,3,5,6,812,6]
+//		function norepeat(arr){
+//			arr.sort()
+//		}
+//		norepeat()
+//		console.log(arr)
+//随机生成四位数字，并出现过10次		
+//document.write(Math.random().toString(10).substring(2,6)+"<br>");
+
+	//统计字符串中每个字符的个数
+	var str="aabbbssskkkkggggkkkk";
+	var obj={}
+	for(var i in str){
+		if(obj[str[i]]==undefined){
+			obj[str[i]]=1;
+		}else{
+			obj[str[i]]=obj[str[i]]+1
+		}
+	}
+	console.log(obj)
+	for(var i in obj){
+		document.write("字符"+i+"出现"+obj[i]+"次"+"<br>")
+	}
+		</script>
+		
+</body>`
+</html>

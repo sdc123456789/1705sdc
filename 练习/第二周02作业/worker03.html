@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//a,a,b,c,c,d
+			
+			var str = "a,a,b,c,c,d";
+			var arr = str.split(",");
+			//console.log(arr,arr.join(""));
+			
+			var obj = {};
+			var newArr = [];
+			for(var i in arr){
+				if(obj[arr[i]]==undefined){
+					newArr.push(arr[i]);
+					obj[arr[i]]  = 1;
+				}else{
+					obj[arr[i]] = obj[arr[i]]+1;
+				}
+			}
+			
+			console.log(obj,newArr.join(""));
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#outer{
+				width: 200px;
+				height: 200px;
+				background: red;
+			}
+			#inner{
+				width: 100px;
+				height: 100px;
+				background: green;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="outer">
+			<div id="inner"></div>
+		</div>
+		<script type="text/javascript">
+			var outer = document.getElementById("outer");
+			var inner = document.getElementById("inner");
+			//普通事件只能执行一次同类型事件处理函数，DOM2级事件可以执行多个同类型的事件处理函数
+			/*outer.onclick = function(){
+				console.log("outer1");
+			}
+			outer.onclick = function(){
+				console.log("outer2");
+			}*/
+			
+			/*outer.addEventListener("click",function(){console.log("outer1")},false);
+			outer.addEventListener("click",function(){console.log("outer2")},false);*/
+			
+			//普通事件默认冒泡，DOM2事件可以设置捕获（需要将第三个参数变成true）
+			
+			/*outer.onclick = function(){
+				console.log("outer");
+			}
+			inner.onclick = function(){
+				console.log("inner");
+			}*/
+			/*outer.addEventListener("click",function(){console.log("outer")},true);
+			inner.addEventListener("click",function(){console.log("inner")},true);*/
+			/*outer.addEventListener("click",function(){console.log("outer")});
+			inner.addEventListener("click",function(){console.log("inner")});*/
+			
+			/*outer.addEventListener("click",foo);
+			function foo(){
+				console.log("aaaa");
+			}*/
+			
+			/*outer.onclick = function(){
+				console.log("outer");
+			}
+			outer.onclick = null;*/
+			
+			
+			/*outer.addEventListener("click",foo);
+			outer.removeEventListener("click",foo);
+			
+			function foo(){
+				console.log("outer");
+			}*/
+			
+			outer.attachEvent("onclick",foo);
+			function foo(){
+				console.log("outer");
+			}
+			
+		</script>
+	</body>
+</html>

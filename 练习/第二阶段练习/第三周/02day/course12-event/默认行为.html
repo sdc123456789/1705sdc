@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#menu{
+				border: 1px solid #CECECE;
+			}
+		</style>
+	</head>
+	<body>
+		<a href="javascript:;">跳转</a>
+		<a href="javascript:void(0);">跳转</a>
+		<a href="">跳转</a>
+		<ul style="display: none;">
+			<li>111</li>
+		</ul>
+		<form id="form1">
+			<input type="text" name="username" id="username">
+			<input type="submit" value="提交"/>
+			<input type="button" value="按钮">
+		</form>
+		<ul id="menu" style="display: none; position: absolute;">
+			<li>复制</li>
+			<li>粘贴</li>
+		</ul>
+		<script type="text/javascript">
+			var aLink = document.getElementsByTagName("a");
+			var oUl = document.getElementsByTagName("ul")[0];
+			aLink[2].onclick = function(e){
+				var evt = e || event;
+				console.log("aaaa");
+				oUl.style.display = "block";
+				//evt.preventDefault();//IE8及以下不支持
+				//evt.returnValue = false;//兼容IE8及现代浏览器
+				return false;//兼容IE8及现代浏览器
+			}
+			var oForm = document.getElementById("form1");
+			oForm.onsubmit = function(){
+				return false;
+			}
+			
+			var oMenu = document.getElementById("menu");
+			
+			
+			document.oncontextmenu = function(e){
+				var evt = e || event;
+				oMenu.style.display = "block";
+				oMenu.style.left = evt.clientX + 10 + "px";
+				oMenu.style.top = evt.clientY + 10 + "px";
+				return false;
+			}
+			document.onclick = function(){
+				oMenu.style.display = "none";
+			}
+			/*oMenu.onclick = function(e){
+				var evt = e || event;
+				
+				evt.cancelBubble = true;
+			}*/
+			
+			var oInput = document.getElementById("username");
+			
+			oInput.onkeydown = function(e){
+				var evt = e || event;
+				console.log(evt.keyCode);
+				if(evt.keyCode<48 || evt.keyCode > 57){
+					return false;
+				}
+//				return false;
+			}
+		</script>
+	</body>
+</html>

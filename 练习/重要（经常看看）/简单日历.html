@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>JavaScript简易日历</title>
+<style type="text/css">
+* { padding: 0; margin: 0; }
+li { list-style: none; }
+body { background: #f6f9fc; font-family: arial; }
+
+.calendar { width: 210px; margin: 0 auto; padding: 10px 10px 20px 20px; background: #eae9e9; }
+.calendar ul { width: 210px; overflow: hidden; padding-bottom: 10px; }
+.calendar li { float: left; width: 58px; height: 54px; margin: 10px 10px 0 0; border: 1px solid #fff; background: #424242; color: #fff; text-align: center; cursor: pointer; }
+.calendar li h2 { font-size: 20px; padding-top: 5px; }
+.calendar li p { font-size: 14px; }
+
+.calendar .active { border: 1px solid #424242; background: #fff; color: #e84a7e; }
+.calendar .active p { font-weight: bold; }
+
+.calendar .text { width: 178px; padding: 0 10px 10px; border: 1px solid #fff; padding-top: 10px; background: #f1f1f1; color: #555; }
+.calendar .text h2 {font-size: 14px; margin-bottom: 10px; }
+.calendar .text p { font-size: 12px; line-height: 18px; }
+
+</style>
+
+</head>
+
+<body>
+
+<div id="tab" class="calendar">
+
+    <ul id="box">
+        <li class="active"><h2>1</h2><p>JAN</p></li>
+        <li ><h2>2</h2><p>FER</p></li>
+        <li ><h2>3</h2><p>MAR</p></li>
+        <li ><h2>4</h2><p>APR</p></li>
+        <li ><h2>5</h2><p>MAY</p></li>
+        <li><h2>6</h2><p>JUN</p></li>
+        <li><h2>7</h2><p>JUL</p></li>
+        <li><h2>8</h2><p>AUG</p></li>
+        <li><h2>9</h2><p>SEP</p></li>
+        <li><h2>10</h2><p>OCT</p></li>
+        <li><h2>11</h2><p>NOV</p></li>
+        <li><h2>12</h2><p>DEC</p></li>
+    </ul>
+    
+    <div class="text" id="txt">
+        <h2>1月活动</h2>
+        <p>似水流年如梦</p>
+    </div>
+
+  </div>
+<script>
+	var oUl = document.getElementById("box");
+	var aLi = document.getElementsByTagName("li");
+	var oTxt = document.getElementById("txt");
+	var oH = oTxt.getElementsByTagName("h2")[0];
+	var oP = oTxt.getElementsByTagName("p")[0];
+	
+	var data = ["尝尽了似水流年","你是唯一可叫我永远怀念","浪淘尽沧海桑田","你是我心中唯一的思念","假如成功就在目前",
+	            "为何还有不敢实现的诺言","满堂盛宴还不如一碗细面","井水一瓢也香甜","十里洋场成就一番功业","潮起潮落",
+	            "里里外外都体面","有谁一任平生不拖不欠"]
+	
+	for(i=0;i<aLi.length;i++){//给每个li添加点击事件
+	aLi[i].index = i;
+	aLi[i].onclick = function(){
+		for(j=0;j<aLi.length;j++){//清空所有的样式，否则点击另外的日期不能恢复
+			aLi[j].className = ""
+		}
+		this.className = "active"
+		aLi[this.index].className = "active";//this是指当前点击的对象
+		//关键字this
+		
+		//改变便签里的能容
+		oH.innerHTML = (this.index+1)+"月份活动"
+		oP.innerHTML = data[this.index]
+		
+	}
+	}
+	
+	
+	
+	
+	
+	
+	
+</script>
+
+
+
+
+
+
+</body>
+</html>

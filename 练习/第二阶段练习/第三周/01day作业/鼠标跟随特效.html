@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>鼠标跟随特效</title>
+	</head>
+	<style>
+		div{background:;width:50px;height:50px;position:absolute;}
+	</style>
+	<body>
+		<div><img src="images/1.png"/> </div>
+		<div><img src="images/1.png"/> </div>
+		<div><img src="images/1.png"/> </div>
+		<div><img src="images/1.png"/> </div>
+		<div><img src="images/1.png"/> </div>
+		<div><img src="images/1.png"/> </div>
+		<div><img src="images/1.png"/> </div>
+		<div><img src="images/1.png"/> </div>
+		<div><img src="images/1.png"/> </div>
+		<div><img src="images/1.png"/> </div>
+		<div><img src="images/1.png"/> </div>
+		<div><img src="images/1.png"/> </div>
+		<div><img src="images/1.png"/> </div>
+		<div><img src="images/1.png"/> </div>
+		<div><img src="images/1.png"/> </div>
+		<div><img src="images/1.png"/> </div>
+		<div><img src="images/1.png"/> </div>
+		<div><img src="images/1.png"/> </div>
+		<div><img src="images/1.png"/> </div>
+		<div><img src="images/1.png"/> </div>
+		
+		<script>
+			var oDiv=document.getElementsByTagName("div");
+			setInterval(function(){
+				for(i=oDiv.length-1;i>0;i--){
+					oDiv[i].style.left=oDiv[i-1].style.left;
+					oDiv[i].style.top=oDiv[i-1].style.top;
+				}
+			},30)
+			document.onmousemove=function(e){
+				evt=e || event;
+				oDiv[0].style.top=evt.clientY+"px";
+				oDiv[0].style.left=evt.clientX+"px";
+			}
+			
+			
+			
+			
+		</script>
+		
+		
+		
+	</body>
+</html>

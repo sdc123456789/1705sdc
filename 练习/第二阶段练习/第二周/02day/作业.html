@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+//		<!--密码强度-->
+//		密码：<input type="text" id="txt"  />
+//		<input type="button" value="提交" id="btn"/>
+//		<script>
+//			btn.onclick=function(){
+//		    val=txt.value;
+//		    var num=false,lit=false,big=false; 
+//			for(var i in val){
+////			code代码密码编码
+//			var code= val[i];
+//			console.log(code);
+//			if(code>=0&&code<=9){
+//				num=true;	
+//			}
+//			if(code>='a'&&code<='z'){
+//				lit=true;
+//			}
+//			if(code>='A'&&code<='Z'){
+//				big=true;
+//			 }
+//		    }
+//			if(num&&lit&&big)
+//			{
+//				document.write('强');
+//			}
+//			else if(num&&!lit&&!big||!num&&lit&&!big ||!num&&!lit&&big)
+//			{
+//				document.write('弱');
+//			}else
+//			{
+//				document.write('中');
+//			}
+//			
+//			}
+			document.write("<br><br><br>")
+//已知字符串“a,a,b,c,c,d”，统计每个字符出现的次数，
+//结果显示 a 2、b 1、c 2、d1，去掉重复的字符，使结果显示 abcd
+	var str="a，a，b，c，c，d"
+	var obj={};
+	var newstr=[];
+	var arr=str.split("，")
+//	document.write(arr)
+	for(var i in str){
+		if(obj[str[i]]==undefined){
+			obj[str[i]]=1;
+			newstr.push(str[i]);
+			var str=newstr.join("")
+		}else{
+			obj[str[i]]=obj[str[i]]+1
+		}	
+	}
+	document.write(newstr);
+	/*for(var i in obj){
+		document.write("字符"+i+"出现"+obj[i]+"次"+"<br>")
+	}
+//	function norepeat(str){
+//		for(var i in str){
+//			for(var j in str){
+//				if(str[i]==str[j]){
+//					str.substr(j,1);
+//					var str1=str.substr(j,1)
+//					j--
+//				}
+//			}
+//		}return str;
+//	}
+//	document.write(norepeat(str));
+//	
+	
+	
+	
+	
+	
+	
+//	var str="a，a，b，c，c，d";
+//	var str=str.split("，");
+//	console.log(str);
+	*/
+	
+		</script>
+	</body>
+</html>

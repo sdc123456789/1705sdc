@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style>
+		#div{width:200px;height:100px;margin:50px auto;background:#f99;border-radius:20px;
+		text-align:center;font:40px/100px "";}
+		/*#diva{width:400px;height:100px;margin:50px auto;background:#f99;border-radius:20px;
+		text-align:center;font:20px/100px "";}*/
+	</style>
+	<body>
+		<div id="div">div</div>
+		<!--<div id="diva">"您刚刚双击了Div,出发了dblclick事件"</div>-->
+		<script>
+			var a="您刚刚双击了Div,出发了dblclick事件"
+			function sd(a){
+				var a="您刚刚双击了Div,出发了dblclick事件"
+				document.write(a);
+			}
+			/*div.ondblclick=function(){
+				alert("您刚刚双击了Div,出发了dblclick事件");
+			}*/
+			div.ondblclick=function(){
+				sd(a)
+			}
+		</script>
+	</body>
+</html>

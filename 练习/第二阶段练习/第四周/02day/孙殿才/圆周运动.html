@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			div{
+				height:400px;
+				width:400px;
+				border:2px solid #0066CC;
+				border-radius:100%;
+				position: absolute;
+			}
+			p{
+				width:150px;
+				height:200px;
+				position:absolute;
+				/*background:#f99;*/
+			}
+			
+		</style>
+		
+		
+		
+	</head>
+	<body>
+		<div>	
+		</div>
+		<p><img src="4.jpg"/></p>
+		
+		<script>
+			var oP = document.getElementsByTagName("p")[0];
+			var r = 200;
+			var angle = 0;
+			timer = setInterval(function(){
+				angle++;
+				
+				x=r*Math.cos(Math.PI/180*angle)	;
+				y=r*Math.sin(Math.PI/180*angle)	;
+				
+				oP.style.left=r+x+"px";
+				oP.style.top=r+y+"px";
+			},30)
+			
+			
+			
+			
+			
+			
+			
+			
+		</script>
+	</body>
+</html>

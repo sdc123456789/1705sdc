@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#f{height:2500px;position:relative;}
+			#muse{height:100px;width:100%;background:#9f9}
+			#muse1{}
+		</style>
+		
+	</head>
+	<body id="body">
+		<div id="f">
+			<p id="muse"></p>
+			<!--<p id=muse1></p>/-->
+		</div>
+		
+		<script>
+//			var body = document.getElementById('body');
+			window.onscroll=function(){
+			var muse=document.getElementById("muse");
+			console.log("muse");
+			var top=document.documentElement.scrollTop||document.body.scrollTop;
+			if(top>300){
+				muse.style.position="fixed";
+				muse.style.top=0;
+			}else{
+				muse.style.position="absolute";
+				muse.style.top="300px";
+			}
+			}
+			
+		</script>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</body>
+</html>
